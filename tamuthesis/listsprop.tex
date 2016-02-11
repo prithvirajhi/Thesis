@@ -1,0 +1,41 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  New template code for TAMU Theses and Dissertations starting Fall 2012.  
+%  For more info about this template or the 
+%  TAMU LaTeX User's Group, see http://www.howdy.me/.
+%
+%  Author: Wendy Lynn Turner 
+%	 Version 1.7
+%  Last updated 3/24/2014
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%       TABLE OF CONTENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% single-space sections in Table of Contents  - commented in version 1.7
+%\renewcommand{\cftsecafterpnum}{\vskip0.5\baselineskip}
+%\renewcommand{\cftsubsecafterpnum}{\vskip0.5\baselineskip}
+%\renewcommand{\cftsubsubsecafterpnum}{\vskip0.5\baselineskip}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\phantomsection
+\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}  
+
+\begin{singlespace}
+\renewcommand\contentsname{\normalfont} {\centerline{TABLE OF CONTENTS}}
+
+%\setcounter{tocdepth}{4} % This puts \subsubsection[]{×} in your List of Tables.  The default is 3.
+
+
+%%%%%%%%%%%%%  Adds Page above the page number in TOC
+\setlength{\cftaftertoctitleskip}{1em}
+\renewcommand{\cftaftertoctitle}{%
+\hfill{\normalfont {Page}\par}}
+
+
+
+\tableofcontents
+
+\end{singlespace}
+
+\pagebreak{}

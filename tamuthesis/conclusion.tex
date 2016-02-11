@@ -1,0 +1,59 @@
+\chapter{\uppercase {Conclusion and Future Work}}
+\label{sec:conclusion}
+
+In this paper we presented two SDN frameworks \aetherflow and \crossflow.  These frameworks aim to bring the wireless networks into the SDN fold using a principled approach and provide greater flexibility and programmability in wireless networks. They provide new abstractions and extensions to demonstate a protocol independent architecture and provide proof-of-concept implementations to showcase flexible network management.
+
+\aetherflow includes the ability to handle wireless packets using an OpenFlow
+data path, remotely configure access points, query mobile
+station capabilities and statistics, and report mobile station events.
+
+To validate our ideas, we implemented an \aetherflow switch and adapted an
+existing OpenFlow controller to work with our extensions of the OpenFlow
+protocol. We experimented with an SDN-based mobile handoff application, and
+found that our design slightly outperforms an optimized non-SDN application.
+% We strongly
+% suspect however, that we could improve throughput and packet loss with a more
+% robust and reliable network configuration. In other words, for this specific
+% wireless SDN application, there is much room to improve. However, 
+We note this is a proof-of-concept experiment designed to show that useful SDN
+applications can be written against the \aetherflow extensions to OpenFlow.
+
+As a general  wireless SDN framework, the \aetherflow model can also
+be immediately leveraged to support a number of different applications, or can
+easily be extended to support them. In addition, similar extension approaches
+can be used on systems other than IEEE~802.11, such as WiMAX or cellular
+networks, which is a promising direction for the evolution of SDN. We leave this
+as our future work.
+
+% claim that support for other applications can be readily built using these SDN
+% extensions.
+% For example:
+% 
+% \begin{itemize}
+% \item \emph{Client steering} could use centralized controller to track network
+% probes for each client and filter the response set from those APs to a subset
+% with strongest signal strength and least usage.
+% 
+% \item \emph{Mobile station and user-based QoS control} could combine
+% client authentication with packet flow analysis to limit or accelerate
+% traffic on the wireless network.
+% 
+% \item \emph{P2P content caching in APs} A centralized control could manage
+% local AP caches by pushing blocks of frequently requested data or web pages
+% directly to the APs where they are frequently used. This would require the
+% entire network to understand application layer protocols.
+% \end{itemize}
+% 
+
+
+
+On the other hand, the \crossflow framework allows flexible and real-time configuration of software defined radio interfaces from a network controller application. It allows a controller application to be written without worrying about the internal details of implementations. In order to validate our approach, we implemented \emph{frequency hopping} and \emph{adaptive modulation} applications. This shows that our design is viable and can extended to introduce new capabilities.
+
+One of the challenges that we need to consider is the issue of latency between controller and SDR framework. The issue can be mitigated, by the introduction of distributed control module in SDR. The distributed control module will allow devices to take local decisions while the centralized controller is responsible for introducing policies and global management, thereby ensuring reduced latency.
+
+The \crossflow framework can also be extended to allow controller to create GNU radio blocks and manipulate inter-connections between GNU radio blocks. It requires to design new API on switch agent and can be implemented by combining the methodology provided by GNU Radio. In GNU radio, each block has an input and output port and the application needs to specify the connecting ports in order to connect the blocks. Only ports which are similar, i.e, ports which operate on same types of data(message or stream), can connect to each other. The data type supported by a block can be obtained by sending capability messages. The decision whether two ports are compatible can be left to the application. 
+
+Our results indicate that while current SDN protocols support the
+development of very intelligent wireline network management applications, \aetherflow and \crossflow are
+significant steps in bringing that same level of programmability to wireless
+networks.

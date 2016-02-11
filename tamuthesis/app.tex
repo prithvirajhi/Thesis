@@ -1,0 +1,67 @@
+\section{\aetherflow Applications}
+\label{sec:application}
+The design of \aetherflow extends the capability of OpenFlow to wireless
+(specifically IEEE~802.11) interfaces in a natural way. \aetherflow enables applications to control both wireline switches and wireless access points. 
+%First, it enables an
+%SDN controller to gain a more comprehensive control over wireless APs and mobile
+%stations. Second, \aetherflow enables an SDN controller to control at the same
+%time wireline switches and wireless access points in the network. 
+As a result,
+network applications that used to require different protocols and cooperation of
+software from different vendors can now be implemented easily using the
+\aetherflow framework. 
+
+We use a Layer~2 fast handoff application to demonstrate the flexibility and new functionality offered by the \aetherflow framework. 
+% enables more powerful network applications to be developed on SDN systems.
+This application
+aims to facilitate the process of mobile station handoff within the same subnet
+during which a device's Layer~3 address is not changed.
+
+% Traditional Layer~2 switched network learns mobility of a mobile client when it
+% receives a packet from the client on a different port. This process is not
+% completed and can lasts for a significant amount of time if no packet is sent by
+% the client after the handoff. During the handoff process, any packet going to
+% the client will be lost. In SDN solutions such as OpenFlow, the controller
+% learns client mobility by receiving a packet-in message. However, A packet-in
+% message cannot be triggered until the client sends a packet after handoff,
+% resulting in the same problem as Layer~2 switched network.
+
+% A Layer~2 fast handoff application is made possible by \aetherflow since it
+% provides the SDN controller with wireless interface information, such as probe,
+% association, client's signal strength, etc. With these information, when handoff
+% occurs or even before that, the SDN controller may actively reconfigure
+% switches in the network so that packets going to the client are redirected to
+% the new AP that the client is associated to.
+
+A typical Layer~2 fast handoff application runs in three phases. The
+first phase is handoff prediction. The controller collects signal
+strength information of the mobile stations by requesting statistics
+of all mobile stations associated with APs under its control. At the same
+time, it receives the probe signal strength of the mobile stations measured by
+other APs from the probe event reports. By keeping these data updated in a
+timely fashion, the controller may predict that a handoff is about to happen, e.g.
+when the mobile station's signal strength to its associated AP gradually weakens
+while the signal strength to another AP gradually strengthens. 
+
+% A more accurate prediction is
+% possible if history data and appropriate prediction model is used.
+
+The second phase of the Layer~2 fast handoff application is multicasting. When a
+handoff prediction of a mobile client is made, the controller multicasts all the
+packets with the client as destination to both its current associated AP and the
+predicted AP. The action is completed by
+modifying the flow entries of the switches in the network. Multicast guarantees
+that the client can receive packet immediately after it reassociates with the
+new AP, thus minimizing the packet loss during the handoff.
+
+The third phase is flow redirection. After the multicasting phase, if the client
+associates with a new AP, the multicast is stopped and all the following packets
+to the client will be redirected to the new AP. If the prediction is wrong and a
+handoff did not occur within a certain timeout period, multicast is stopped and
+all the following packets will be forwarded to the original AP that the client
+is associated to. \aetherflow makes the decision possible with event report
+interface that provides client association event report to the controller.
+
+Other than Layer~2 handoff application, wireless network applications such as
+client steering, user-based QoS control, etc.\ can also be easily implemented
+using \aetherflow framework.

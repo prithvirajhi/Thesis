@@ -1,0 +1,27 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  New template code for TAMU Theses and Dissertations starting Fall 2012.  
+%  For more info about this template or the 
+%  TAMU LaTeX User's Group, see http://www.howdy.me/.
+%
+%  Author: Wendy Lynn Turner 
+%	 Version 1.0 
+%  Last updated 8/5/2012
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                           ABSTRACT 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{ABSTRACT}
+\addcontentsline{toc}{chapter}{ABSTRACT} % Needs to be set to part, so the TOC doesnt add 'CHAPTER ' prefix in the TOC.
+
+\pagestyle{plain} % No headers, just page numbers
+\pagenumbering{roman} % Roman numerals
+\setcounter{page}{2}
+
+\indent Software Defined Networking (SDN) has recently emerged as a transformational tool to design and operate communication networks and services. While the SDN approach has significant benefits for both wireline and wireless radio networks, the support for  wireless networks in SDN technologies is still in its infancy as compared to wired networks. One of the key features of SDN is that networks can be managed in a programmatic manner. The challenge for building such a model for wireless radio networks is that there is a plethora of radio protocols that need to be supported, each having its own nuances. To address this, we need to build fundamental abstractions that provide enough visibility so that a programmer can implement protocols, while at the same time being rigid enough not to expose excessive details that will complicate the application development process.
+The purpose of this work is to introduce a principled approach towards building a cross-layer architecture for wireless networks so that they can receive the same level of programmability as wireline interfaces. Specifically we aim to integrate wireless protocols into the general SDN framework and to provide a logical and consistent view of physical layer radio resources. This is achieved by proposing a new set of abstractions and their interfaces based upon exisitng SDN terminology and the basic building blocks of Software Defined Radio (SDR) in wireless devices.  
+We validate our approach by implementing our design as an extension of an existing OpenFlow data plane and deploying it in an IEEE~802.11 accesspoint as well as in a typical SDR system.   
+
+\pagebreak{}
