@@ -54,31 +54,44 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\aetherflow}{{\AE}therFlow\xspace}
+\newcommand{\aetherflowcap}{{\AE}THERFLOW\xspace}
 \newcommand{\crossflow}{CrossFlow\xspace}
+\newcommand{\crossflowcap}{CROSSFLOW\xspace}
 
 \hyphenation{of-soft-switch}
 
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 \begin{document}
 
-\renewcommand{\tamumanuscripttitle}{CrossFlow: Towards a Programmable Radio Framework Using SDR and SDN Principles }
-\renewcommand{\tamupapertype}{Thesis Proposal}
+\renewcommand{\tamumanuscripttitle}{Towards a Principled Wireless Support in SDN and  Programmable Radio Framework in SDR using SDN Principles }
+\renewcommand{\tamupapertype}{Thesis}
 \renewcommand{\tamufullname}{Prithviraj Shome}
 \renewcommand{\tamudegree}{Master of Science}
-\renewcommand{\tamuchairone}{Dr. Alex Sprintson}
+\renewcommand{\tamuchairone}{Alex Sprintson}
 % Uncomment out the next line if you have co-chairs.  You will also need to edit the titlepage.tex file.
 \newcommand{\tamuchairtwo}{Additional Chair Name}
-\renewcommand{\tamumemberone}{Dr. Paul Gratz}
-\newcommand{\tamumembertwo}{Dr. Radu Stoleru}
+\renewcommand{\tamumemberone}{Paul Gratz}
+\newcommand{\tamumembertwo}{Radu Stoleru}
 \newcommand{\tamumemberthree}{}
-\renewcommand{\tamudepthead}{Dr. Miroslav M. Begovic}
-\renewcommand{\tamugradmonth}{January}
+\renewcommand{\tamudepthead}{Miroslav M. Begovic}
+\renewcommand{\tamugradmonth}{February}
 \renewcommand{\tamugradyear}{2016}
 \renewcommand{\tamudepartment}{Computer Engineering}
 
 
 \include{titlepage} % This is simply a file that formats and adds your titlepage, please do not edit this unless you have a specific need. .
 \include{abstract}
-\include{listsprop}  % This is simply a file that formats and adds your toc, lof, and lot, please do not edit this unless you have a specific need. .
+%\include{dedication}
+\include{acknowledgements}
+\include{nomenclature}
+%\include{listsprop}  % This is simply a file that formats and adds your toc, lof, and lot, please do not edit this unless you have a specific need. .
+\include{lists}  % This is simply a file that formats and adds your toc, lof, and lot, please do not edit this unless you have a specific need. .
 \include{introduction}
 \include{background}
 \include{related}

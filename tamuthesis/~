@@ -22,6 +22,8 @@
  \usepackage{tamuconfig}
 \usepackage{rotating}
 \usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{caption, subcaption}
 
 % Added to fix issues with pdf searching in some versions of LaTeX
 %\usepackage[T1]{fontenc}\usepackage{lmodern}
@@ -52,41 +54,56 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\aetherflow}{{\AE}therFlow\xspace}
+\newcommand{\aetherflowcap}{{\AE}THERFLOW\xspace}
 \newcommand{\crossflow}{CrossFlow\xspace}
+\newcommand{\crossflowcap}{CROSSFLOW\xspace}
 
 \hyphenation{of-soft-switch}
 
 \begin{document}
 
-\renewcommand{\tamumanuscripttitle}{CrossFlow: Towards a Programmable Radio Framework Using SDR and SDN Principles }
+\renewcommand{\tamumanuscripttitle}{Principled Wireless Support in SDN and Programmable Radio Framework in SDR using SDN Principles }
 \renewcommand{\tamupapertype}{Thesis Proposal}
 \renewcommand{\tamufullname}{Prithviraj Shome}
 \renewcommand{\tamudegree}{Master of Science}
-\renewcommand{\tamuchairone}{Dr. Alex Sprintson}
+\renewcommand{\tamuchairone}{Alex Sprintson}
 % Uncomment out the next line if you have co-chairs.  You will also need to edit the titlepage.tex file.
 \newcommand{\tamuchairtwo}{Additional Chair Name}
-\renewcommand{\tamumemberone}{Dr. Paul Gratz}
-\newcommand{\tamumembertwo}{Dr. Radu Stoleru}
-\newcommand{\tamumemberthree}{Dr. Jose Silva-Martinez}
-\renewcommand{\tamudepthead}{Director of Graduate Studies}
+\renewcommand{\tamumemberone}{Paul Gratz}
+\newcommand{\tamumembertwo}{Radu Stoleru}
+\newcommand{\tamumemberthree}{}
+\renewcommand{\tamudepthead}{Miroslav M. Begovic}
 \renewcommand{\tamugradmonth}{January}
 \renewcommand{\tamugradyear}{2016}
-\renewcommand{\tamudepartment}{Electrical and Computer Engineering}
+\renewcommand{\tamudepartment}{Computer Engineering}
 
 
 \include{titlepage} % This is simply a file that formats and adds your titlepage, please do not edit this unless you have a specific need. .
 \include{abstract}
-\include{introduction}
+\include{dedication}
 \include{acknowledgements}
-\include{nomenclature}
-
+%\include{listsprop}  % This is simply a file that formats and adds your toc, lof, and lot, please do not edit this unless you have a specific need. .
 \include{lists}  % This is simply a file that formats and adds your toc, lof, and lot, please do not edit this unless you have a specific need. .
+\include{introduction}
+\include{background}
+\include{related}
+\include{model}
+\include{impl}
+\include{app}
+\include{evaluation}
+\include{experiment}
+%\include{architecture}
+\include{conclusion}
+%\include{architecture}
+%\include{nomenclature}
 
-\include{section1}
-\include{section2}
-\include{section3}
+%\include{lists}  % This is simply a file that formats and adds your toc, lof, and lot, please do not edit this unless you have a specific need. .
 
-fix spacing in bibliography, if any...
+%\include{section1}
+%\include{section2}
+%\include{section3}
+
+%fix spacing in bibliography, if any...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \let\oldbibitem\bibitem
 \renewcommand{\bibitem}{\setlength{\itemsep}{0pt}\oldbibitem}

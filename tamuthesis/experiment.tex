@@ -44,7 +44,7 @@ interface.
 
 \begin{figure}
 \centering
-\includegraphics[trim=1.25in 1.5in 2in 0.5in, clip, width=.5\textwidth]{figures/topology}
+\includegraphics[trim=1.25in 1.5in 2in 0.5in, clip, width=.6\textwidth]{figures/topology}
 \caption{Experiment network topology}
 \label{fig:topology}
 \end{figure}
@@ -72,12 +72,12 @@ seconds after the prediction, the controller reverts the multicast and forwards
 packets to only AP1.
 
 
-\begin{figure}
+\begin{table}
 \centering
-\includegraphics[width=.5\textwidth]{figures/duration}
+\includegraphics[width=.6\textwidth]{figures/duration}
 \caption{Comparison of handoff duration in each experiment.}
 \label{fig:duration}
-\end{figure}
+\end{table}
 
 
 \subsection{Experiment Procedure and Results}
@@ -146,25 +146,25 @@ The plots are shown in Figures~\ref{fig:throughput} and \ref{fig:loss}.
 They demonstrate that in terms of both throughput and loss rate, the \aetherflow
 configuration recovers from handoff faster than the bridge configuration. 
 
-\begin{figure}
+\begin{table}
 \centering
-\includegraphics[width=.5\textwidth]{figures/throughput}
+\includegraphics[width=.8\textwidth]{figures/throughput}
 \caption{Comparison of throughput for \aetherflow and the baseline configuration.} % The throughput of
 % \aetherflow configuration recovers from handoff in $5.5$ seconds, comparing to
 % $7$ seconds in the bridge configuration.} % The total throughput of \aetherflow
 % configuration during the handoff ($9$s to $16$s) is $24.5$M while that of the bridge
 % configuration is $5.8$M.}
 \label{fig:throughput}
-\end{figure}
+\end{table}
 
-\begin{figure}
+\begin{table}
 \centering
-\includegraphics[width=.5\textwidth]{figures/loss}
+\includegraphics[width=.8\textwidth]{figures/loss}
 \caption{Comparison of packet loss rate for \aetherflow and the baseline configuration.} % The packet loss
 % of \aetherflow configuration recovers from handoff in $5.5$ seconds, comparing
 % to $7$ seconds in the bridge configuration.}
 \label{fig:loss}
-\end{figure}
+\end{table}
 
 The experiment results show that even with the overhead induced by SDN data plane processing, the performance of Layer~2 handoff application based
 on \aetherflow is better that of Linux kernel bridge configuration. % It shows
