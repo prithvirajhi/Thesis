@@ -1,7 +1,7 @@
 \chapter{\uppercase {OpenFlow Extensions}}
 \label{sec:extensions}
 
-\blfootnote{*This  work is based upon paper titled "\aetherflow: Principled Wireless Support in SDN" published in CoolSDN '15 and the paper titled "\crossflow: A Cross-layer Architecture for SDR using SDN principles" published in IEEE NFV-SDN '15.}
+\blfootnote{*This  work is based upon paper titled "\aetherflow: Principled Wireless Support in SDN" published in CoolSDN '15 ~\cite{aetherflow} and the paper titled "\crossflow: A Cross-layer Architecture for SDR using SDN principles" published in IEEE NFV-SDN '15.~\cite{crossflow}}
 
 In our previous work, we derived a generalized SDN abstractions model, called
 TinyNBI \cite{Casey:14}, from the OpenFlow specifications \cite{openflow}.
@@ -262,16 +262,17 @@ The interfaces for \emph{Sink} and \emph{Modulators} are categorized as follows:
 
 \textbf{Modulators.}
 \begin{itemize}
-\item \textbf{Capabilities}: The interface allows the controller to configure properties of the modulator block such as:
+\item \textbf{Capabilities}: The interface allows the controller to query the properties of the modulator block such as:
+    (i) Modulations supported;
+    (ii) Current samples/symbol; and
+    (iii) Gray code.
+\item \textbf{Configuration}: The interface allows the controller to configure properties of the modulator block such as:
     (i) Choice of modulation scheme (e.g. BPSK, QPSK and 8PSK);
     (ii) Samples/symbol; and
     (iii) Use of a Gray code.
-\item \textbf{Configuration}: The interface allows the controller to gather statistics for the modulator block such as:
+\item \textbf{Statistics}: The interface allows the controller to gather statistics for the modulator block such as:
     (i) Signal to Noise Ratio (SNR) and 
     (ii) Bit Error Rate (BER).
-\item \textbf{Statistics}: The interface allows the controller to take decisions based upon events in a sink such as:
-    (i) Low or high RSSI and
-    (ii) Low or high on-board temperature.
 \item \textbf{Events}: The interface allows the controller to take decisions based upon events in the modulator block such as:
     (i) Low or high SNR and
     (ii) Low or high BER.
