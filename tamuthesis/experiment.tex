@@ -72,13 +72,6 @@ seconds after the prediction, the controller reverts the multicast and forwards
 packets to only AP1.
 
 
-\begin{table}
-\centering
-\includegraphics[width=.6\textwidth]{figures/duration}
-\caption{Comparison of handoff duration in each experiment.}
-\label{fig:duration}
-\end{table}
-
 
 \subsection{Experiment Procedure and Results}
 In each round of experiment, the mobile station is initially associated with AP1. Both the traffic generator
@@ -88,7 +81,7 @@ the traffic generator to STA.  After experiment starts, STA moves from coverage
 of AP1 to coverage of AP2, which forces the client to handoff from AP1 to AP2.
 We move STA in a controlled manner such that the handoff happens at eight seconds
 after the experiment starts. This time is selected such that the handoff happens
-one second after the controller application initiates multicasting.  Throughput
+almost immediately after the controller application initiates multicasting.  Throughput
 and packet loss rate during each round of test is measured by iperf with an
 interval of 0.5s. In each round of experiment, one of the following
 configurations is used:
@@ -97,59 +90,58 @@ configurations is used:
 the Layer 2 switch and the two APs use the Linux built-in learning bridge to
 forward packets. This is the traditional way of configuring a Layer 2 network
 with two access points and one switch. 
-\item {\bf \aetherflow configuration} enables \aetherflow on the APs and the
+\item {\bf \aetherflow configuration with prediction} enables \aetherflow on the APs and the
 switch, and the handoff is managed by the Layer 2 handoff application (described
 above) running on the \aetherflow controller using the Ryu controller framework.  
+\item {\bf \aetherflow configuration without prediction} enables \aetherflow on the APs and the
+switch, and the handoff is managed by a similar Layer 2 handoff application given above without enabling prediction.  
 \end{itemize}
 
-% \begin{figure*}[t]
-%   \begin{subfigure}{0.5\textwidth}
-%     \includegraphics[trim=1.5in 3in 1.6in 1.1in, clip,
-%     width=\textwidth]{figures/phase1}
-%     \caption{Before STA association}
-%     \label{fig:phase1}
-%   \end{subfigure}
-%   \begin{subfigure}{0.5\textwidth}
-%     \includegraphics[trim=1.5in 2.8in 1.3in 1.25in, clip,
-%     width=\textwidth]{figures/phase2}
-%     \caption{Before handoff prediction}
-%     \label{fig:phase2}
-%   \end{subfigure}
-% 
-%   \begin{subfigure}{0.5\textwidth}
-%     \includegraphics[trim=1.5in 2.8in 1.3in 1.25in, clip,
-%     width=\textwidth]{figures/phase3}
-%     \caption{After handoff prediction} 
-%     \label{fig:phase3}
-%   \end{subfigure}
-%   \begin{subfigure}{0.5\textwidth}
-%     \includegraphics[trim=1.5in 2.8in 1.3in 1.25in, clip,
-%     width=\textwidth]{figures/phase4}
-%     \caption{After STA handoff}
-%     \label{fig:phase4}
-%   \end{subfigure}
-%   \caption{The evolution of STA packet forwarding directions and flow tables.}
-% \end{figure*}
+\begin{figure*}
+\centering
+  \begin{subfigure}[a]{\textwidth}
+        \centering
+      \includegraphics[width=1\textwidth]{figures/predduration.pdf}
+      \caption{Handoff duration for \aetherflow configuration with prediction}
+      \label{fig:pred}
+  \end{subfigure}
 
-Five rounds of experiments are conducted on each of the two configurations
+  \begin{subfigure}[b]{\textwidth}
+        \centering
+      \includegraphics[width=1\textwidth]{figures/bridgeduration.pdf}
+      \caption{Handoff duration for bridge configuration}
+      \label{fig:bridge}
+  \end{subfigure}
+
+  \begin{subfigure}[c]{\textwidth}
+  \centering
+      \includegraphics[width=1\textwidth]{figures/simpleduration.pdf}
+      \caption{Handoff duration for \aetherflow configuration without prediction}
+      \label{fig:simple}
+  \end{subfigure}%
+  \caption{Comparision of handoff duration for each experiment type}
+  \label{fig:duration}
+\end{figure*}
+
+Fifteen rounds of experiments are conducted on each of the two configurations
 above. In a single round of experiment, the mobile station is considered to be
-in handoff process during an interval after time $t$ = 9s if its average
+in handoff process during an interval after time $t$ = 7s if its average
 throughput during the interval is less than 8 Mbps. By this criteria we can
 determine the handoff duration of STA in each round of experiment. Our results, depicted  in Figure~\ref{fig:duration}, indicate that the average handoff
-duration of \aetherflow configuration across the five rounds of experiments is
-\textbf{5.9}s, which is lower than that of bridge configuration \textbf{7.1}s.
+duration of \aetherflow configuration with prediction across the fifteen rounds of experiments is
+\textbf{5.9}s, which is lower than that of bridge configuration \textbf{7.1}s and \aetherflow configration without prediction \textbf{0}s.
 
-We compare the traffic throughput and packet loss rate of the two experiments
-which have median handoff duration in each configuration (experiment 1 for
+We compare the traffic throughput and packet loss rate of the experiments
+which have median handoff duration in \aetherflow with prediction and bridge configurations (experiment 1 for
 bridge configuration and experiment 5 for \aetherflow configuration). 
-The plots are shown in Figures~\ref{fig:throughput} and \ref{fig:loss}.
-They demonstrate that in terms of both throughput and loss rate, the \aetherflow
+The plots are shown in Figures~\ref{fig:throughput} and \ref{fig:loss}. We also provide the plot of average handoff duration for each of the three experiments along with their standard errors for a confidence level of 95 percent in Figure~\ref{fig:confidence}.
+These plots demonstrate that in terms of both throughput and loss rate, the \aetherflow
 configuration recovers from handoff faster than the bridge configuration. 
 
 \begin{table}
 \centering
 \includegraphics[width=.8\textwidth]{figures/throughput}
-\caption{Comparison of throughput for \aetherflow and the baseline configuration.} % The throughput of
+\caption{Comparison of throughput for \aetherflow with prediction and the baseline configuration.} % The throughput of
 % \aetherflow configuration recovers from handoff in $5.5$ seconds, comparing to
 % $7$ seconds in the bridge configuration.} % The total throughput of \aetherflow
 % configuration during the handoff ($9$s to $16$s) is $24.5$M while that of the bridge
@@ -160,10 +152,17 @@ configuration recovers from handoff faster than the bridge configuration.
 \begin{table}
 \centering
 \includegraphics[width=.8\textwidth]{figures/loss}
-\caption{Comparison of packet loss rate for \aetherflow and the baseline configuration.} % The packet loss
+\caption{Comparison of packet loss rate for \aetherflow with prediction and the baseline configuration.} % The packet loss
 % of \aetherflow configuration recovers from handoff in $5.5$ seconds, comparing
 % to $7$ seconds in the bridge configuration.}
 \label{fig:loss}
+\end{table}
+
+\begin{table}
+\centering
+\includegraphics[width=.8\textwidth]{figures/confidence}
+\caption{Comparison of average handoff duration for different models with standard error} 
+\label{fig:confidence}
 \end{table}
 
 The experiment results show that even with the overhead induced by SDN data plane processing, the performance of Layer~2 handoff application based
