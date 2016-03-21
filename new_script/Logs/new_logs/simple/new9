@@ -16,9 +16,9 @@
 [  4] 7.000-7.500 sec   561 KBytes  9.20 Mbits/sec   0.770 ms    0/  391 (0%) -/-/-/- ms  792 pps
 [  4] 7.500-8.000 sec   548 KBytes  8.98 Mbits/sec   0.906 ms    0/  382 (0%) -/-/-/- ms  764 pps
 [  4] 8.000-8.500 sec   105 KBytes  1.72 Mbits/sec   3.547 ms    0/   73 (0%) -/-/-/- ms  337 pps
-[  4] 8.500-9.000 sec  0.00 Bytes  0.00 bits/sec   3.547 ms    0/    0 (0%) -/-/-/- ms    0 pps
-[  4] 9.000-9.500 sec  0.00 Bytes  0.00 bits/sec   3.547 ms    0/    0 (0%) -/-/-/- ms    0 pps
-[  4] 9.500-10.000 sec  0.00 Bytes  0.00 bits/sec   3.547 ms    0/    0 (0%) -/-/-/- ms    0 pps
+[  4] 8.500-9.000 sec  0.00 Bytes  0.00 bits/sec   3.547 ms    0/    0 (nan%) -/-/-/- ms    0 pps
+[  4] 9.000-9.500 sec  0.00 Bytes  0.00 bits/sec   3.547 ms    0/    0 (nan%) -/-/-/- ms    0 pps
+[  4] 9.500-10.000 sec  0.00 Bytes  0.00 bits/sec   3.547 ms    0/    0 (nan%) -/-/-/- ms    0 pps
 [  4] 10.000-10.500 sec  1.44 KBytes  23.5 Kbits/sec   6.296 ms 1831/ 1832 (1e+02%) -/-/-/- ms    0 pps
 [  4] 10.500-11.000 sec   461 KBytes  7.55 Mbits/sec   0.435 ms   40/  361 (11%) -/-/-/- ms  768 pps
 [  4] 11.000-11.500 sec   550 KBytes  9.01 Mbits/sec   0.906 ms    0/  383 (0%) -/-/-/- ms  765 pps
