@@ -1,0 +1,35 @@
+[  4] local 192.168.4.2 port 5001 connected with 192.168.4.1 port 62729
+[  4] 0.000-0.500 sec   551 KBytes  9.03 Mbits/sec   0.279 ms   14/  398 (3.5%) -/-/-/- ms  766 pps
+[  4] 0.500-1.000 sec   543 KBytes  8.89 Mbits/sec   0.501 ms    0/  378 (0%) -/-/-/- ms  758 pps
+[  4] 1.000-1.500 sec   541 KBytes  8.87 Mbits/sec   0.395 ms    0/  377 (0%) -/-/-/- ms  754 pps
+[  4] 1.500-2.000 sec   548 KBytes  8.98 Mbits/sec   0.535 ms    0/  382 (0%) -/-/-/- ms  764 pps
+[  4] 2.000-2.500 sec   550 KBytes  9.01 Mbits/sec   0.495 ms    0/  383 (0%) -/-/-/- ms  766 pps
+[  4] 2.500-3.000 sec   550 KBytes  9.01 Mbits/sec   0.522 ms    0/  383 (0%) -/-/-/- ms  762 pps
+[  4] 3.000-3.500 sec   548 KBytes  8.98 Mbits/sec   0.446 ms    0/  382 (0%) -/-/-/- ms  767 pps
+[  4] 3.500-4.000 sec   550 KBytes  9.01 Mbits/sec   0.712 ms    0/  383 (0%) -/-/-/- ms  766 pps
+[  4] 4.000-4.500 sec   551 KBytes  9.03 Mbits/sec   0.459 ms    0/  384 (0%) -/-/-/- ms  766 pps
+[  4] 4.500-5.000 sec   550 KBytes  9.01 Mbits/sec   0.444 ms    0/  383 (0%) -/-/-/- ms  765 pps
+[  4] 5.000-5.500 sec   550 KBytes  9.01 Mbits/sec   0.473 ms    0/  383 (0%) -/-/-/- ms  766 pps
+[  4] 5.500-6.000 sec   551 KBytes  9.03 Mbits/sec   0.503 ms    0/  384 (0%) -/-/-/- ms  766 pps
+[  4] 6.000-6.500 sec   550 KBytes  9.01 Mbits/sec   0.581 ms    0/  383 (0%) -/-/-/- ms  764 pps
+[  4] 6.500-7.000 sec   533 KBytes  8.73 Mbits/sec   1.268 ms    0/  371 (0%) -/-/-/- ms  749 pps
+[  4] 7.000-7.500 sec   492 KBytes  8.07 Mbits/sec   4.629 ms    0/  343 (0%) -/-/-/- ms  672 pps
+[  4] 7.500-8.000 sec   277 KBytes  4.54 Mbits/sec   1.084 ms    0/  193 (0%) -/-/-/- ms  790 pps
+[  4] 8.000-8.500 sec  0.00 Bytes  0.00 bits/sec   1.084 ms    0/    0 (0%) -/-/-/- ms    0 pps
+[  4] 8.500-9.000 sec  0.00 Bytes  0.00 bits/sec   1.084 ms    0/    0 (0%) -/-/-/- ms    0 pps
+[  4] 9.000-9.500 sec  0.00 Bytes  0.00 bits/sec   1.084 ms    0/    0 (0%) -/-/-/- ms    0 pps
+[  4] 9.500-10.000 sec  0.00 Bytes  0.00 bits/sec   1.084 ms    0/    0 (0%) -/-/-/- ms    0 pps
+[  4] 10.000-10.500 sec  0.00 Bytes  0.00 bits/sec   1.084 ms    0/    0 (0%) -/-/-/- ms    0 pps
+[  4] 10.500-11.000 sec  0.00 Bytes  0.00 bits/sec   1.084 ms    0/    0 (0%) -/-/-/- ms    0 pps
+[  4] 11.000-11.500 sec  0.00 Bytes  0.00 bits/sec   1.084 ms    0/    0 (0%) -/-/-/- ms    0 pps
+[  4] 11.500-12.000 sec   383 KBytes  6.28 Mbits/sec   0.509 ms  501/  768 (65%) -/-/-/- ms   63 pps
+[  4] 12.000-12.500 sec   495 KBytes  8.11 Mbits/sec   0.621 ms    0/  345 (0%) -/-/-/- ms  690 pps
+[  4] 12.500-13.000 sec   550 KBytes  9.01 Mbits/sec   0.555 ms    0/  383 (0%) -/-/-/- ms  766 pps
+[  4] 13.000-13.500 sec   551 KBytes  9.03 Mbits/sec   1.297 ms    0/  384 (0%) -/-/-/- ms  764 pps
+[  4] 13.500-14.000 sec   510 KBytes  8.35 Mbits/sec   0.777 ms    0/  355 (0%) -/-/-/- ms  711 pps
+[  4] 14.000-14.500 sec   553 KBytes  9.06 Mbits/sec   1.348 ms    0/  385 (0%) -/-/-/- ms  766 pps
+[  4] 14.500-15.000 sec   508 KBytes  8.33 Mbits/sec   0.378 ms    0/  354 (0%) -/-/-/- ms  706 pps
+[  4] 15.000-15.500 sec   515 KBytes  8.44 Mbits/sec   5.684 ms    0/  359 (0%) -/-/-/- ms  650 pps
+[  4] 0.000-15.991 sec  12.7 MBytes  6.67 Mbits/sec   0.955 ms  514/ 9590 (5.4%) -/-/-/- ms  567 pps
+[  4] 0.000-15.991 sec  1 datagrams received out-of-order
+
