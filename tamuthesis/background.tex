@@ -13,13 +13,19 @@ Network reconfigurability is a major challenge in the networking industry. The e
 Software Defined Networking (SDN) is an architecture which addresses these challenges by decoupling the control and forwarding functions. This enforces abstraction of underlying implementation and enables applications or network services to be developed using the abstractions as shown in Figure~\ref{fig:SDN}. This simple and elegant design also provides applications a centralized view of the network. As a result, it has sparked tremendous research interest in providing a scalable, secure and programmatic approach towards the challenges discussed above. While SDN is a revolutionary approach, it is still mainly geared towards wired networks. The wireless networks have not recieved much attention in this regard. Through \aetherflow, we provide a protocol independent approach for bringing wireless into SDN model. In this thesis, we go a step further and provide a mechanism for dynamic radio resource management to obtain true network visibility in a heterogeneous network.     
 
 \begin{figure}[t]
-  \centering
-  \includegraphics[width=1.5\textwidth]{figures/OpenFlow.pdf}
-  \caption{SDN Ecosystem with OpenFlow protocol}
-  \label{fig:OpenFlow}
+  \begin{minipage}{\textwidth}
+      \centering
+      \includegraphics[width=1\textwidth]{figures/OpenFlow.pdf}
+      \caption[SDN Ecosystem with OpenFlow protocol]{SDN Ecosystem with OpenFlow protocol\protect\footnotemark}
+%  \caption[Caption for LOF]{SDN Ecosystem with OpenFlow protocol\protect\footnotemark}
+%      \caption[SDN Ecosystem with OpenFlow protocol]{SDN Ecosystem with OpenFlow protocol\footnote{Courtesy: flowgrammable.org}}
+      \label{fig:OpenFlow}
+  \end{minipage}  
 \end{figure}
 \section{OpenFlow.}
 OpenFlow is an open standard, that began as research project, which allows researchers to experiment with innovative protocols on network switches, without the requirement of exposure to thier internal implementations. OpenFlow\cite{openflow} builds upon the control and data plane abstractions envisioned in the SDN framework, to provide a well defined communication protocol between the two planes as well as a flow table abstraction. Each entry in a flowtable is composed of a number of fields for a packet to match upon, along with a set of associated instructions; each instruction involves performing some actions on a packet or modification of the pipeline processing in the form of allowing packets to be sent to other tables for processing. The OpenFlow communication protocol allows the centralized controller to interact with the switches so that the controller can add, delete or modify the flow table entries to perform certain processing actions. The protocol runs over TCP/TLS (Transport Layer Security) connection so that the communication remains secured and prevent unwanted intrusion which can compromise the security of the entire network. In order for a switch to understand controller's commands, the switch vendors implement a switch agent and in this manner the implementation detail is abstracted out from the controller's point of view. This abstraction paradigm helps in development of sophisticated applications which can leverage the OpenFlow primitivies, to configure the data plane as well as listen for specific events, thereby enabling an asynchronous programmming model. This OpenFlow enabled SDN ecosystem opens the door for various network innovations and in this thesis, we leverage this model to implement a programmable control plane for radio resource management using Software Defined Radio (SDR). An overview of the current SDN ecosystem is presented in Figure~\ref{fig:OpenFlow}.     
+
+\footnotetext{Courtesy: flowgrammable.org}
 
 \begin{figure}[t]
   \centering
