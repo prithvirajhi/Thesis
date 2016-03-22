@@ -44,7 +44,7 @@ interface.
 
 \begin{figure}
 \centering
-\includegraphics[trim=1.25in 1.5in 2in 0.5in, clip, width=.6\textwidth]{figures/topology}
+\includegraphics[width=1.0\textwidth]{figures/topology}
 \caption{Experiment network topology}
 \label{fig:topology}
 \end{figure}
@@ -79,7 +79,7 @@ and the mobile station are assigned static IP addresses within the same subnet. 
 starts, a UDP \texttt{iperf} session with bandwidth of 9Mbps is initiated from
 the traffic generator to STA.  After experiment starts, STA moves from coverage
 of AP1 to coverage of AP2, which forces the client to handoff from AP1 to AP2.
-We move STA in a controlled manner such that the handoff happens at eight seconds
+We move STA in a controlled manner such that the handoff happens at seven seconds
 after the experiment starts. This time is selected such that the handoff happens
 almost immediately after the controller application initiates multicasting.  Throughput
 and packet loss rate during each round of test is measured by iperf with an
@@ -94,7 +94,7 @@ with two access points and one switch.
 switch, and the handoff is managed by the Layer 2 handoff application (described
 above) running on the \aetherflow controller using the Ryu controller framework.  
 \item {\bf \aetherflow configuration without prediction} enables \aetherflow on the APs and the
-switch, and the handoff is managed by a similar Layer 2 handoff application given above without enabling prediction.  
+switch, and the handoff is managed by a similar Layer 2 handoff application as given above without enabling prediction.  
 \end{itemize}
 
 \begin{figure*}
@@ -123,18 +123,18 @@ switch, and the handoff is managed by a similar Layer 2 handoff application give
   \label{fig:duration}
 \end{figure*}
 
-Fifteen rounds of experiments are conducted on each of the two configurations
+Fifteen rounds of experiments are conducted on each of the three configurations given
 above. In a single round of experiment, the mobile station is considered to be
 in handoff process during an interval after time $t$ = 7s if its average
 throughput during the interval is less than 8 Mbps. By this criteria we can
 determine the handoff duration of STA in each round of experiment. Our results, depicted  in Figure~\ref{fig:duration}, indicate that the average handoff
-duration of \aetherflow configuration with prediction across the fifteen rounds of experiments is
-\textbf{5.9}s, which is lower than that of bridge configuration \textbf{7.1}s and \aetherflow configration without prediction \textbf{0}s.
+duration of \aetherflow configuration with ~prediction across the fifteen rounds of experiments is
+\textbf{2.53}s, which is lower than that of bridge configuration \textbf{3.8}s and \aetherflow configration without prediction \textbf{3.17}s.
 
 We compare the traffic throughput and packet loss rate of the experiments
-which have median handoff duration in \aetherflow with prediction and bridge configurations (experiment 1 for
-bridge configuration and experiment 5 for \aetherflow configuration). 
-The plots are shown in Figures~\ref{fig:throughput} and \ref{fig:loss}. We also provide the plot of average handoff duration for each of the three experiments along with their standard errors for a confidence level of 95 percent in Figure~\ref{fig:confidence}.
+which have median handoff duration in \aetherflow with prediction and bridge configurations (experiment 3 for
+bridge configuration and experiment 4 for \aetherflow configuration). 
+The plots are shown in Figures~\ref{fig:throughput} and \ref{fig:loss}. We also provide the plot of average handoff duration for each of the three experiment types along with their standard errors for a confidence level of 95 percent in Figure~\ref{fig:confidence}.
 These plots demonstrate that in terms of both throughput and loss rate, the \aetherflow
 configuration recovers from handoff faster than the bridge configuration. 
 
