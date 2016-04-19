@@ -217,7 +217,7 @@ version, nine messages are defined in \aetherflow:
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.8\textwidth]{figures/UML.pdf}
-  \caption{Abstraction model of \crossflow}
+  \caption{UML diagram of \crossflow model.}
   \label{fig:uml}
 \end{figure}
 
@@ -228,12 +228,12 @@ version, nine messages are defined in \aetherflow:
 %  \label{fig:message_block}
 %\end{figure*}
 
-We build upon the \emph{radio physical port} concept proposed in \aetherflow to create a new layer of abstractions. This layer of abstractions exhibits a composition or \emph{has-a} relationship with the \emph{radio physical port} abstraction. This means that the blocks of this layer are the objects or members that comprise the \emph{radio physical port}. These blocks are derived from the most commonly used processing blocks in GNU Radio~\cite{gnuradio}. This abstract model serves the following design vision:
+We extend the data model proposed in \cite{Casey:14} to create an abstraction model for the \crossflow framework, which is displayed in Figure~\ref{fig:uml}. We build upon the \emph{radio physical port} concept proposed in \cite{aetherflow} to create a new layer of abstractions, which we refer to as the \emph{wireless radio port} in this paper. This layer of abstractions exhibits a composition or \emph{has-a} relationship with the \emph{wireless radio port} abstraction (i.e., ``the wireless radio port \emph{has a} sink, modulator, or channel coder). This means that the blocks of this layer are the objects or members that comprise the \emph{wireless radio port}. These blocks are derived from the most commonly used processing blocks in GNU Radio~\cite{gnuradio}. This abstract wireless radio port model serves the following design vision:
 
 \begin{itemize}
-\item From an application point of view, it allows visibility into the signal processing blocks, without going into implementation details.
+\item It allows visibility into the signal processing blocks from an application point of view, without going into implementation details.
+\item It allows for the development of an event driven framework for radio operation.
 \item It allows composition of blocks to implement new functionality, as this decision is handled by the higher \emph{radio physical port} abstraction. The application simply specifies the blocks to be connected for a specific wireless port instance and the internal framework handles the implementation.
-\item It allows optional blocks to be put into the framework, which provides great flexibility for radio implementation. If any abstraction is not implemented, then we can use seamless emulation, switch offload or error indication techniques mentioned in \cite{Casey:14}.
 \end{itemize}
 
 In our current design, we focus on the first point of changing and quering the parameters of blocks at runtime. We assume that the number of blocks is fixed and the blocks can be connected in a consistent manner. In order to change parameters, the application needs to send \emph{\big \langle command,value\big \rangle} tuple in a message. For query and receive event responses, it registers for events for each block and during an event, appropriate callbacks are invoked. This ability to register for events is important so that a centralized controller can receive events asyncronously and implement a reactive model for its operations.
