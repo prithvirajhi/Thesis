@@ -203,7 +203,7 @@ Noise Amplitude Factor & Packet Error Rate & SNR (in dB) \\ \midrule
 
 \subsection{Frequency Hopping Application Implementation}
 
-In this implementation,  the controller simply issues \emph{GNU-CONFIG-FREQ} command with the desired frequency and pushes this configuration to the device. As shown in Figure~\ref{fig:flowgraph}, the \texttt{ofsoftswitch} receives this command and forwards it to the GNU Radio domain. The centralized \texttt{\crossflow Hub} inside the GNU Radio domain processes this request and issues appropriate commands to the  USRP Controller, which ultimately signals the USRP block to tune into the requested frequency. The application uses a pre-determined sequence of 910, 915 and 920MHz frequencies which changes every 5 seconds along with a fixed BPSK modulation scheme.
+In this implementation,  the Ryu SDN controller simply issues \emph{GNU-CONFIG-FREQ} command with the desired frequency and pushes this configuration to the device. As shown in Figure~\ref{fig:flowgraph}, the \texttt{ofsoftswitch} receives this command and forwards it to the GNU Radio domain. The centralized \texttt{\crossflow Hub} inside the GNU Radio domain processes this request and issues appropriate commands to the  USRP Controller, which ultimately signals the USRP block to tune into the requested frequency. The application uses a pre-determined sequence of 910, 915 and 920MHz frequencies which changes every 5 seconds along with a fixed BPSK modulation scheme.
 
 
 \subsection{Adaptive Modulation  Application Implementation}
