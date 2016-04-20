@@ -179,31 +179,47 @@ on \aetherflow is better that of Linux kernel bridge configuration. % It shows
 
 We use the \crossflow implementation described in \ref{sec:evaluation} to provide a proof-of-concept validation of our design. We demonstrate the viability of \crossflow which  allows SDN applications to change the radio physical properties of wireless radio upon various qualifying parameters like channel conditions. 
 
-
-\begin{figure*}
-\centering
-  \begin{subfigure}[b]{\textwidth}
-        \centering
-      \includegraphics[width=1\textwidth]{figures/Freq.pdf}
-      \caption{Spectral output for \emph{frequency hopping} application. The frequency changes every 5 seconds keeping BPSK as a fixed modulation scheme.}
-      \label{fig:freq}
-  \end{subfigure}
-
-  \begin{subfigure}[a]{\textwidth}
+\begin{figure}[t]
   \centering
-      \includegraphics[width=1\textwidth]{figures/Mod.pdf}
-      \caption{Constellation output for \emph{adaptive modulation} application. The modulation scheme changes every 5 seconds keeping a fixed frequency of 910 MHz.}
-      \label{fig:mod}
-  \end{subfigure}%
-  \caption{Experimentation results for Frequency Hopping and Adaptive Modulation applications.}
-\end{figure*}
+  \includegraphics[width=0.6\textwidth]{figures/Setup.pdf}
+  \caption{Setup for cognitive radio application in \crossflow}
+  \label{fig:setup}
+\end{figure}
 
+
+\begin{table}[]
+\centering
+\caption{Variation of SNR and PER with increasing Noise Amplitude Factor keeping a fixed data rate of 1Mbps.}
+\label{my-label}
+\begin{tabular}{@{}|c|c|c|@{}}
+\toprule
+Noise Amplitude Factor & Packet Error Rate & SNR (in dB) \\ \midrule
+0                      & 0.15\%            & 5.8553                     \\ \midrule
+0.09                   & 6.34\%            & -0.2983                    \\ \midrule
+0.14                   & 19.89\%           & -0.9483                    \\ \bottomrule
+\end{tabular}
+ \label{fig:table}
+\end{table}
 
 \subsection{Frequency Hopping Application Implementation}
 
-In this implementation,  the controller simply issues \emph{GNU-CONFIG-FREQ} command with desired frequency and pushes this configuration to the device. The \texttt{ofsoftswitch} receives this command and forwards it to the GNU Radio domain. The centralized \texttt{\crossflow Hub} inside the GNU Radio domain processes this request and issues appropriate commands to the  USRP Controller, which ultimately signals the USRP block to tune into the requested frequency. Figure~\ref{fig:freq} shows the experimental results where the sequence of changing frequencies is 910, 915 and 920 MHz and is changed every 5 seconds. For this application, we use a fixed BPSK modulation scheme.
+In this implementation,  the controller simply issues \emph{GNU-CONFIG-FREQ} command with the desired frequency and pushes this configuration to the device. As shown in Figure~\ref{fig:flowgraph}, the \texttt{ofsoftswitch} receives this command and forwards it to the GNU Radio domain. The centralized \texttt{\crossflow Hub} inside the GNU Radio domain processes this request and issues appropriate commands to the  USRP Controller, which ultimately signals the USRP block to tune into the requested frequency. The application uses a pre-determined sequence of 910, 915 and 920MHz frequencies which changes every 5 seconds along with a fixed BPSK modulation scheme.
 
 
 \subsection{Adaptive Modulation  Application Implementation}
 
-Similar to the \emph{frequency hopping} application, the controller issues the \emph{GNU-CONFIG-MOD} command with the appropriate modulation scheme (BPSK, QPSK, or 8PSK) and forwards the request to the device. The request ultimately reaches the Mod Controller, which is a multiplexer block that selects the requested modulation scheme. Figure~\ref{fig:mod} shows the results for changing the modulation scheme between BPSK, QPSK and 8PSK every 5 seconds, keeping a fixed carrier frequency of 910 MHz.
+Similar to the \emph{frequency hopping} application, the Ryu SDN controller issues the \emph{GNU-CONFIG-MOD} command with the appropriate modulation scheme (BPSK, QPSK, or 8PSK) and forwards the request to the device. The request ultimately reaches the Mod Controller, which is a multiplexer block as shown in Figure~\ref{fig:flowgraph}, that selects the requested modulation scheme. The application requests the use of a modulation scheme from among BPSK, QPSK and 8PSK modulations every 5 seconds with a fixed carrier frequency of 910 MHz.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/Overhead.pdf}
+  \caption{Range of packets loss while changing channels by keeping a fixed data rate and a varying noise factor across each experiment}
+  \label{fig:overhead}
+\end{figure}
+\subsection{Cognitive Radio Application Implementation}
+
+As stated in Section~\ref{sec:evaluation}, we build upon the frequency hopping application to implement a cognitive radio application. Figure~\ref{fig:setup} shows the experimental setup, where we have three USRP N210 devices that act as sender, receiver and noise source. The sender is set at a 10 dB power level and 0.3 transmission amplitude factor, while the noise source is set at 10 dB power with a variable amplitude factor. Note that the amplitude factor is simply a constant that is multiplied to the transmitted signal to adapt the effective transmission power. The sender and receiver are at a distance of 5 meters apart and the sender begins transmission at 910 MHz carrier frequency with 1 Mbps data rate and packet length of 50 Bytes. The noise source on the other hand, sends high frequency pulses with varying amplitude factors at 910 MHz frequency. We refer to the noise source's transmission amplitude factor as the noise amplitude factor (NF). When SNR falls below a specified threshold, a low SNR event is triggered by the \texttt{SNR Monitor} block and the event summary is sent to \texttt{ofsoftswitch} through \texttt{\crossflow Hub}. This request is then forwarded to the Ryu SDN controller using the event response message. The application, upon receiving this message, sends a {GNU-CONFIG-FREQ} command so that the device changes the channel to the requested frequency. The sequence of actions involved in changing the channel is similar to the one mentioned in the previous section for \emph{frequency hopping}.
+
+Using this setup, we conduct two tests: one to measure the effect of the NF on the receiver's packet error rate (PER) and SNR at the 910 MHz carrier frequency (both measured over 1,000,000 packets transmitted at 1 Mbps with NFs of 0.0, 0.09, 0.14), and another to measure how quickly the cognitive radio can trigger and respond to a low SNR event (with NFs 0.09, 0.17 and 0.22, and data rates 256 Kbps, 512 Kbps and 1 Mbps).
+Table~\ref{fig:table} shows the PER and SNR values obtained in the first experiment. As expected, the PER increases and SNR decreases with increasing NFs.
+In the second experiment, which demonstrates a simple cognitive radio application, the transmitter and receiver pair switch to a new carrier frequency (915 MHz) when the instantaneous received SNR falls below the pre-defined 6 dB threshold. In Figure~\ref{fig:overhead}, we show the number of packets that are lost over the course of time required for the SNR to be sensed below the 6 dB threshold, for the receiver to generate the low SNR event, and for the Ryu SDN controller to respond by issuing the {GNU-CONFIG-FREQ} command, and finally for the transmitter to switch frequencies. We repeat this experiment three times for each combination of data rate and noise factor, and plot each measurement in Figure~\ref{fig:overhead} as a separate bar.   

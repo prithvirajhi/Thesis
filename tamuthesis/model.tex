@@ -283,9 +283,14 @@ The interfaces for \emph{Sink} and \emph{Modulators} are categorized as follows:
 \section{\crossflow Message Extensions}
 \label{sec:messages}
   		  
-\crossflow uses SDN design principles to control a network of configurable SDRs. As such, to enable control plane interactions between the SDN controller and the SDR, we had two options: either we could have implemented our own control protocol to enable their interactions or extend the existing OpenFlow \cite{openflow} framework. This is because OpenFlow does not natively support wireless features. In order to enable a cleaner implementation, we extend OpenFlow by using experimenter messages within the OpenFlow protocol, similar to \aetherflow. This provides two advantages:
+\crossflow uses SDN design principles to control a network of configurable SDRs. As such, to enable control plane interactions between the SDN controller and the SDR, we had two options: either we could have implemented our own control protocol to enable their interactions or extend the existing OpenFlow \cite{openflow} framework. This is because OpenFlow does not natively support wireless features. In order to enable a cleaner implementation, we decided to extend OpenFlow by using experimenter messages within the OpenFlow protocol, similar to \aetherflow. Experimenter messages are a part of the standard OpenFlow protocol which provides a mechanism for vendors to include propriety information within the protcol. This provides us with two advantages:
 \begin{itemize}
 \item We do not need to implement a new protocol for control and data plane interactions.
-\item As we are using experimenter messages to carry \crossflow messages, the controller does not need to perform special handling for these messages. This enables the controller to remain independent of the underlying devices and hence it can handle both wired and wireless devices. 
-\end{itemize} 
-We currently define configuration request messages for the Sink and Modulators abstractions.
+\item As we are using experimenter messages to carry \crossflow messages, the SDN controller does not need to perform special handling for these messages. This enables the controller to remain independent of the underlying devices and hence it can handle both wired and wireless devices.
+\end{itemize}
+In the current version, we define three messages in \crossflow:
+\begin{itemize}
+\item Configuration message request - Request for modification of parameters like gain, frequency, SNR threshold and modulation scheme.
+\item Statistics message request - Request for statistics such as SNR, BER and RSSI.
+\item Event message response - Response for events like SNR below threshold and low BER.
+\end {itemize}
